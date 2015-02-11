@@ -1,0 +1,9 @@
+{
+  "name": "knob-fn-color",
+  "version": "0.0.0",
+  "authors": [
+    "aterrien"
+  ],
+  "main": "knob-fn-color.js",
+  "license": "MIT"
+}
