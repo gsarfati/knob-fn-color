@@ -702,26 +702,29 @@
                 String(Math.abs(this.o.min)).length,
                 2
             ) + 2;
-
+            var that = this
+            function updateStyle() {
+                that.i.css({
+                    'width' : ((that.w / 2 + 4) >> 0) + 'px',
+                    'height' : ((that.w / 3) >> 0) + 'px',
+                    'position' : 'absolute',
+                    'vertical-align' : 'middle',
+                    'margin-top' : ((that.w / 3) >> 0) + 'px',
+                    'margin-left' : '-' + ((that.w * 3 / 4 + 2) >> 0) + 'px',
+                    'border' : 0,
+                    'background' : 'none',
+                    'font' : that.o.fontWeight + ' ' + ((that.w / s) >> 0) + 'px ' + that.o.font,
+                    'text-align' : 'center',
+                    'color' : that.o.inputColor(that.v, that.o.max) || that.o.fgColor,
+                    'padding' : '0px',
+                    '-webkit-appearance': 'none'
+                    }) || that.i.css({
+                        'width': '0px',
+                        'visibility': 'hidden'
+                    });
+            }
             this.o.displayInput
-                && this.i.css({
-                        'width' : ((this.w / 2 + 4) >> 0) + 'px',
-                        'height' : ((this.w / 3) >> 0) + 'px',
-                        'position' : 'absolute',
-                        'vertical-align' : 'middle',
-                        'margin-top' : ((this.w / 3) >> 0) + 'px',
-                        'margin-left' : '-' + ((this.w * 3 / 4 + 2) >> 0) + 'px',
-                        'border' : 0,
-                        'background' : 'none',
-                        'font' : this.o.fontWeight + ' ' + ((this.w / s) >> 0) + 'px ' + this.o.font,
-                        'text-align' : 'center',
-                        'color' : this.o.inputColor || this.o.fgColor,
-                        'padding' : '0px',
-                        '-webkit-appearance': 'none'
-                        }) || this.i.css({
-                            'width': '0px',
-                            'visibility': 'hidden'
-                        });
+                && updateStyle()
         };
 
         this.change = function (v) {
@@ -783,6 +786,7 @@
             c.strokeStyle = this.h2rgba(this.fgColor(this.cv, this.o.max), 1);
             c.arc(this.xy, this.xy, this.radius, a.s, a.e, a.d);
             c.stroke();
+            this.i.css({'color' : this.o.inputColor(this.v, this.o.max)});
         };
 
         this.cancel = function () {
